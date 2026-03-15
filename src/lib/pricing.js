@@ -1,0 +1,88 @@
+export const price = {
+  mtn: [
+    { "1gb": "#300 - 7days" },
+    { "2gb": "#600 - 7days" },
+    { "5gb": "#1500 - 14days" },
+    { "10gb": "#2000 - 14days" },
+    { "20gb": "#4000 - 30days" },
+    { "40gb": "#8000 - 30days" },
+    { "50gb": "#10000 - 30days" },
+  ],
+  airtel: [
+    { "1gb": "#250 - 7days" },
+    { "2gb": "#600 - 7days" },
+    { "5gb": "#1500 - 14days" },
+    { "10gb": "#2000 - 14days" },
+    { "20gb": "#4000 - 30days" },
+    { "40gb": "#8000 - 30days" },
+    { "50gb": "#10000 - 30days" },
+  ],
+  glo: [
+    { "1gb": "#200 - 7days" },
+    { "2gb": "#600 - 7days" },
+    { "5gb": "#1500 - 14days" },
+    { "10gb": "#2000 - 14days" },
+    { "20gb": "#4000 - 30days" },
+    { "40gb": "#8000 - 30days" },
+    { "50gb": "#10000 - 30days" },
+  ],
+  etisalat: [
+    { "1gb": "#150 - 7days" },
+    { "1gb": "#300 - 7days" },
+    { "2gb": "#600 - 7days" },
+    { "5gb": "#1500 - 14days" },
+    { "10gb": "#2000 - 14days" },
+    { "20gb": "#4000 - 30days" },
+    { "40gb": "#8000 - 30days" },
+    { "50gb": "#10000 - 30days" },
+  ],
+};
+
+export const plan = [
+  { id: "1gb ", label: "#250 - 7days" },
+  { id: "2gb", label: "#600 - 7days" },
+  { id: "5gb ", label: " #1500 - 14days" },
+  { id: "20gb ", label: " #4000 - 30days" },
+  { id: "40gb ", label: " #8000 - 30days" },
+  { id: "50gb ", label: " #10000 - 30days" },
+  { id: "10gb ", label: " #2000 - 14days" },
+];
+
+export const transaction = [
+  {
+    id: 12331,
+    type: "credit",
+    status: "pending",
+    reference: "UE3UR9305UT",
+    description: "You bought ₦2,000 (VTU) GLO airtime for 08135427630",
+    amount: 2000,
+    date$time: 1758862228172,
+  },
+  {
+    id: 83749249,
+    type: "debit",
+    status: "failed",
+    reference: "UE1IR993URW",
+    description: "You bought 2GB GLO data for 0811327630",
+    amount: 1000,
+    date$time: 1758862228172,
+  },
+  {
+    id: 8345249,
+    type: "credit",
+    status: "success",
+    reference: "UY8JSD5NF1RW",
+    description: "You bought 2GB GLO data for 0811327630",
+    amount: 2340,
+    date$time: 1758862228172,
+  },
+  {
+    id: 83749249,
+    type: "debit",
+    status: "success",
+    reference: "UE1IR993URW",
+    description: "You bought 10000 GLO airtime for 0811327630",
+    amount: 10000,
+    date$time: 1758862228172,
+  },
+];
