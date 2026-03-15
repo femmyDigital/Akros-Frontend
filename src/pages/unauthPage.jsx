@@ -1,4 +1,4 @@
-import ComponentHeader from "@/components/common/Header";
+import ComponentHeader from "@/components/common/header";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { useNavigate } from "react-router-dom";
