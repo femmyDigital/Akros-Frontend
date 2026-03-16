@@ -7,7 +7,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Login() {
-  const [formData, setFormData] = useState("");
+  const [formData, setFormData] = useState({
+    email: "femmy@gmail.com",
+    password: "123456",
+  });
   const { toast } = useToast();
   const queryClient = useQueryClient();
 

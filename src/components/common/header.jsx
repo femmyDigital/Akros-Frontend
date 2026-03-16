@@ -49,7 +49,7 @@ function Header({ setOpen }) {
 
       <img
         className="logo lg:mx-8 lg:w-[400px] lg:h-[50px] w-[180px] h-[50px]"
-        src="/OikiaWideLogo_Orange.png"
+        src="/.png"
         alt=""
       />
 

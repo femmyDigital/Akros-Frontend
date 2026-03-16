@@ -24,10 +24,22 @@ import {
   Users,
   Wallet,
   Wifi,
+  Check,
+  Copy,
 } from "lucide-react";
-import React from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import React, { useState } from "react";
 
 function UserDashboard() {
+  const [copied, setCopied] = useState("");
+
+  const account = {
+    company: "Jessica Brown - TMT",
+    bank: "Akros MFB",
+    accountNumber: "9037709266",
+    currency: "NGN",
+  };
+
   const transactions = [
     {
       service: "MTN Airtime",
@@ -66,41 +78,47 @@ function UserDashboard() {
     { description: "REFERRALS", icon: Users, value: 7 },
   ];
 
+  const copy = (text, type) => {
+    navigator.clipboard.writeText(text);
+    setCopied(type);
+    setTimeout(() => setCopied(""), 1500);
+  };
+
   return (
-    <div className="flex flex-col m-0 gap-5">
+    <div className="flex flex-col m-0 gap-5 w-[90vw] lg:w-[80vw] justify-center ">
       {/* Welcome   */}
       <div>
         <h1 className="text-2xl lg:text-2xl font-medium ">
           Welcome back, Jessica 👋
         </h1>
         <p className="text-gray-400 mt-1 text-sm">
-          Let’s grow your Terra Mint Token (TMT)
+          Get data, pay bills keep surfing
         </p>
       </div>
 
       {/* Stat Card  */}
-      <div className="flex flex-row gap-2 justify-center items-center">
+      <div className="grid lg:grid-cols-4 grid-cols-2  gap-2 justify-center items-center  ">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <Card className="flex lg:w-1/4 flex-row p-3 items-end">
-              <CardTitle className="icon p-3 bg-blue-400 rounded-md">
-                <Icon color="#fff" size={50} />
+            <Card className="flex flex-row p-2 lg:p-3 items-end g-1 lg:g-3">
+              <CardTitle className="icon p-2 lg:p-3 bg-blue-500 rounded-md">
+                <Icon color="#fff " size={50} />
               </CardTitle>
               <CardContent className="">
-                <CardDescription className="text-[11px] font-extralight">
+                <CardDescription className="text-[9px] lg:text-[11px] font-extralight">
                   {stat.description}
                 </CardDescription>
-                <p className="text-xl">{stat.value}</p>
+                <p className="text-center text-sm lg:text-xl">{stat.value}</p>
               </CardContent>
             </Card>
           );
         })}
       </div>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6  w-full bg-slate-100 dark:bg-slate-900">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6  w-full   bg-slate-100 dark:bg-slate-900">
         {/* ATM CARD */}
-        <Card className="relative overflow-hidden p-4 text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black rounded-2xl shadow-xl">
+        <Card className="overflow-hidden p-5 text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black rounded-2xl shadow-xl  space-y-4">
           <div className="flex justify-between items-start">
             <h2 className="text-sm uppercase tracking-widest text-gray-300">
               Wallet Card
@@ -108,28 +126,54 @@ function UserDashboard() {
             <span className="text-xs text-gray-400">Active</span>
           </div>
 
-          {/* Card Number */}
-          <h1 className="text-2xl tracking-widest mt-3 font-mono">
-            **** **** **** 3535
-          </h1>
+          <div className="relative z-10 flex flex-col justify-between h-full">
+            {/* Top */}
+            <div className="flex justify-between items-start">
+              <div>
+                <h2 className="text-lg font-semibold tracking-wide">
+                  {account.company}
+                </h2>
+                <p className="text-sm opacity-80 mt-1">{account.bank}</p>
+              </div>
 
-          {/* Card Holder */}
-          <div className="flex justify-between items-end mt-3">
-            <div>
-              <p className="text-xs text-gray-400">Account Holder</p>
-              <h3 className="text-lg font-semibold">Jessica Brown</h3>
+              <span className="text-sm font-bold tracking-widest">
+                {account.currency}
+              </span>
             </div>
 
+            {/* Account Number */}
             <div>
-              <p className="text-xs text-gray-400">Account No</p>
-              <h3 className="text-lg font-semibold">34343353</h3>
-            </div>
-          </div>
+              <p className="text-xs opacity-80 mb-1">Account Number</p>
+              <div className="flex items-center gap-3">
+                <p className="text-xl font-mono tracking-widest">
+                  {account.accountNumber.replace(
+                    /(\d{3})(\d{3})(\d{4})/,
+                    "$1 $2 $3",
+                  )}
+                </p>
 
-          {/* Balance */}
-          <div className="mt-6">
-            <p className="text-xs text-gray-400">Available Balance</p>
-            <h1 className="text-2xl font-bold text-green-400">₦5,000</h1>
+                <button
+                  onClick={() => copy(account.accountNumber, "account")}
+                  className="p-2 rounded-full bg-white/20 hover:bg-white/30"
+                >
+                  {copied === "account" ? (
+                    <Check size={16} />
+                  ) : (
+                    <Copy size={16} />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="flex justify-between items-end text-xs">
+              {/* User Code */}
+              <div>
+                <p className="opacity-80 mb-1">Deposits only </p>
+              </div>
+
+              <span className="opacity-70">Deposits only</span>
+            </div>
           </div>
         </Card>
 
@@ -192,13 +236,13 @@ function UserDashboard() {
       </div>
 
       {/* Quick Services  */}
-      <div>
+      <div className="flex flex-col  ">
         <h2 className="text-lg font-semibold mb-4">Quick Services</h2>
-        <div className="grid grid-cols-4 justify-center gap-4 items-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 lg:justify-center gap-4 items-center ">
           {services.map((ser, i) => {
             const Icon = ser.icon;
             return (
-              <Card className="flex flex-col p-4 gap-2 shadow-md justify-center items-center hover:underline">
+              <Card className="flex flex-col lg:p-4 p-2 gap-2 shadow-md justify-center items-center hover:underline ">
                 <Icon size={60} className="text-blue-500" />
                 <p className="font-medium">{ser.name}</p>
               </Card>
@@ -210,39 +254,42 @@ function UserDashboard() {
       {/* Recent Transactions */}
       <div>
         <h2 className="text-lg font-semibold mb-4">Recent Transactions</h2>
-        <Card className="rounded-2xl">
-          <CardContent className="p-0">
-            <table className="w-full text-sm">
-              <thead className="bg-gray-50 text-gray-600">
-                <tr>
-                  <th className="p-4 text-left">Service</th>
-                  <th className="p-4 text-left">Phone</th>
-                  <th className="p-4 text-left">Amount</th>
-                  <th className="p-4 text-left">Status</th>
-                  <th className="p-4 text-left">Date</th>
-                </tr>
-              </thead>
+        <ScrollArea className=" lg:w-[80vw] p-2 md:w-[94vw] w-[92vw] overflow-hidden whitespace-nowrap rounded-2xl border">
+          <Card className="">
+            <CardContent className="p-0">
+              <Table className="w-full text-sm">
+                <TableHeader className="bg-gray-50 text-gray-600">
+                  <TableRow>
+                    <TableHead className="p-4 text-center">Service</TableHead>
+                    <TableHead className="p-4 text-center">Phone</TableHead>
+                    <TableHead className="p-4 text-center">Amount</TableHead>
+                    <TableHead className="p-4 text-center">Status</TableHead>
+                    <TableHead className="p-4 text-center">Date</TableHead>
+                  </TableRow>
+                </TableHeader>
 
-              <tbody>
-                {transactions.map((tx) => {
-                  return (
-                    <tr className="border-t">
-                      <td className="p-4">{tx.service}</td>
-                      <td className="p-4">{tx.to}</td>
-                      <td className="p-4">₦{tx.amount}</td>
-                      <td
-                        className={`p-4 ${tx.status === "pending" ? "text-yellow-400" : tx.status === "failed" ? "text-red-500" : "text-green-500"}`}
-                      >
-                        {tx.status}
-                      </td>
-                      <td className="p-4">{tx.date}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </CardContent>
-        </Card>
+                <tbody>
+                  {transactions.map((tx) => {
+                    return (
+                      <tr className="border-t">
+                        <td className="p-4">{tx.service}</td>
+                        <td className="p-4">{tx.to}</td>
+                        <td className="p-4">₦{tx.amount}</td>
+                        <td
+                          className={`p-4 ${tx.status === "pending" ? "text-yellow-400" : tx.status === "failed" ? "text-red-500" : "text-green-500"}`}
+                        >
+                          {tx.status}
+                        </td>
+                        <td className="p-4">{tx.date}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+              <ScrollBar orientation="horizontal" />
+            </CardContent>
+          </Card>
+        </ScrollArea>
       </div>
     </div>
   );

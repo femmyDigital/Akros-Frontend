@@ -13,7 +13,7 @@ function UserLayout() {
       <div className="flex flex-1 flex-col">
         {/* Admin Header} */}
         <Header setOpen={setOpenSidebar} />
-        <main className="flex flex-col flex-1 bg-muted/40 p-4 md:p-6">
+        <main className="flex flex-col flex-1 bg-muted/40 p-4 md:p-6 border-red-600">
           <Outlet />
         </main>
       </div>

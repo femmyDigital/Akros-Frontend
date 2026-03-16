@@ -95,7 +95,7 @@ function UserSidebar({ open, setOpen }) {
             <SheetHeader className="border-b">
               <SheetTitle className="flex gap-2 my-3">
                 <ChartNoAxesCombined size={30} />
-                <span>Sun Lander</span>
+                <h1 className="text-3xl font-bold">Akros</h1>
               </SheetTitle>
             </SheetHeader>
             <MenuItems setOpen={setOpen} />
@@ -108,7 +108,7 @@ function UserSidebar({ open, setOpen }) {
           className="flex cursor-pointer items-center gap-2"
         >
           <ChartNoAxesCombined size={30} />
-          <h1 className="text-2xl font-extrabold">Sun Lander </h1>
+          <h1 className="text-3xl font-bold">Akros</h1>
         </div>
         <MenuItems />
       </aside>

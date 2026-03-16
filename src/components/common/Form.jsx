@@ -180,7 +180,11 @@ function CommonForm({
           </div>
         ))}
       </div>
-      <Button disabled={isBtnDisabled} type="submit" className="mt-7 w-full">
+      <Button
+        disabled={isBtnDisabled}
+        type="submit"
+        className="mt-7 w-full bg-blue-600 hover:bg-blue-700"
+      >
         {buttonText || "Submit"}
       </Button>
     </form>

@@ -190,7 +190,7 @@ export default function LandingPage() {
               </p>
 
               <div className="space-y-4 text-gray-400">
-                <p>📧 Email: support@swiftvtu.com</p>
+                <p>📧 Email: support@akros.com</p>
 
                 <p>📞 Phone: +234 XXX XXX XXXX</p>
 
