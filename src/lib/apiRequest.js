@@ -4,7 +4,7 @@ import axios from "axios";
 // http://localhost:3001
 
 const apiRequest = axios.create({
-  baseURL: "https://akros-backend.onrender.com/api/v1",
+  baseURL: "https://9g6nk4-3001.csb.app/api/v1",
   withCredentials: true,
 });
 
