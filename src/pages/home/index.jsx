@@ -239,7 +239,7 @@ export default function LandingPage() {
       {/* FOOTER */}
 
       <footer className="border-t border-white/10 py-10 text-center text-gray-400">
-        <p>© {new Date().getFullYear()} SwiftVTU. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Akros. All rights reserved.</p>
       </footer>
     </div>
   );
