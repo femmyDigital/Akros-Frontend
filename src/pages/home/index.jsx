@@ -9,7 +9,7 @@ export default function LandingPage() {
     <div className="bg-black text-white  min-h-screen">
       {/* NAVBAR */}
       <nav className="flex justify-between items-center px-8 py-6 border-b border-white/10 backdrop-blur-md shadow-lg shadow-blue-500/40">
-        <h1 className="text-3xl font-bold text-blue-500">AkrosPay</h1>
+        <h1 className="text-3xl font-bold text-blue-500">Akros</h1>
 
         <div className="space-x-6 hidden md:flex">
           <a href="#services" className="hover:text-blue-400">
